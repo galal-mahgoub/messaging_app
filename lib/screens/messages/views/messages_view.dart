@@ -8,6 +8,7 @@ import 'package:messaging_app/screens/messages/controllers/messages_controller.d
 import 'package:messaging_app/screens/messages/views/components/category_card.dart';
 import 'package:messaging_app/screens/messages/views/components/list_chat_card.dart';
 
+import '../../../core/theme/font_manager.dart';
 import '../../../core/widgets/search_icon.dart';
 import 'components/grid_chat_card.dart';
 
@@ -25,7 +26,9 @@ class MessagesView extends StatelessWidget {
               appBar: AppBar(
                 title: Text(
                   'Pinned Chats',
-                  style: context.textTheme.headlineLarge,
+                  style: context.textTheme.headlineLarge!.copyWith(
+                    fontWeight: FontWeightManger.bold,
+                  ),
                 ),
                 actions: [
                   Padding(
@@ -150,7 +153,9 @@ class RecentChats extends StatelessWidget {
                     appBar: AppBar(
                       title: Text(
                         'Recent Chats',
-                        style: context.textTheme.headlineLarge,
+                        style: context.textTheme.headlineLarge!.copyWith(
+                          fontWeight: FontWeightManger.bold,
+                        ),
                       ),
                       actions: const [
                         SearchIcon(),
@@ -167,7 +172,7 @@ class RecentChats extends StatelessWidget {
                             height: 28,
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              itemCount: categories.length,
+                              itemCount: channels.length,
                               itemBuilder: (context, index) {
                                 String category = categories[index];
                                 return CategoryCard(

@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:messaging_app/core/utils/extensions.dart';
 
 import '../../../../core/consts/assets.dart';
-import '../../../../core/consts/enum.dart';
 import '../../../../core/theme/color_manager.dart';
 import '../../../../core/models/call_model.dart';
 import '../../../../core/widgets/custom_image.dart';
+import '../../../../core/widgets/image_status.dart';
 import '../../../../core/widgets/menu_icon.dart';
 import 'history_call_card.dart';
 
@@ -27,35 +27,10 @@ class HistoryCallsDialog extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              Stack(
-                children: [
-                  ClipOval(
-                    child: CustomImage(
-                      path: call.callerImg,
-                      width: 48,
-                      height: 48,
-                    ),
-                  ),
-                  if (call.callerStatus != UserStatus.none)
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        height: 12,
-                        width: 12,
-                        decoration: BoxDecoration(
-                          color: userStatus(
-                            call.callerStatus,
-                          ),
-                          border: Border.all(
-                            width: 1.5,
-                            color: ColorManager.whiteColor,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                    ),
-                ],
+              ImageStatus(
+                img: call.callerImg,
+                status: call.callerStatus,
+                imgSize: 48,
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -95,7 +70,7 @@ class HistoryCallsDialog extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 16),
-              MenuIcon(),
+              const MenuIcon(),
             ],
           ),
         ),

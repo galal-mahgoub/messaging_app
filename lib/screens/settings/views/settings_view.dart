@@ -22,7 +22,9 @@ class SettingsView extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               'Settings',
-              style: context.textTheme.headlineLarge,
+              style: context.textTheme.headlineLarge!.copyWith(
+                fontWeight: FontWeightManger.bold,
+              ),
             ),
             actions: const [
               SearchIcon(),

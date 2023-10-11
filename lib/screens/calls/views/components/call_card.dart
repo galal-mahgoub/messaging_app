@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:messaging_app/core/consts/assets.dart';
-import 'package:messaging_app/core/consts/enum.dart';
 import 'package:messaging_app/core/theme/color_manager.dart';
 import 'package:messaging_app/core/models/call_model.dart';
 import 'package:messaging_app/core/utils/extensions.dart';
 import 'package:messaging_app/core/widgets/custom_image.dart';
 import 'package:messaging_app/screens/calls/views/components/history_calls_dialog.dart';
+
+import '../../../../core/widgets/image_status.dart';
 
 class CallCard extends StatelessWidget {
   const CallCard({
@@ -30,35 +31,10 @@ class CallCard extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Row(
           children: [
-            Stack(
-              children: [
-                ClipOval(
-                  child: CustomImage(
-                    path: call.callerImg,
-                    width: 48,
-                    height: 48,
-                  ),
-                ),
-                if (call.callerStatus != UserStatus.none)
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      height: 12,
-                      width: 12,
-                      decoration: BoxDecoration(
-                        color: userStatus(
-                          call.callerStatus,
-                        ),
-                        border: Border.all(
-                          width: 1.5,
-                          color: ColorManager.whiteColor,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-              ],
+            ImageStatus(
+              img: call.callerImg,
+              status: call.callerStatus,
+              imgSize: 48,
             ),
             const SizedBox(width: 16),
             Expanded(

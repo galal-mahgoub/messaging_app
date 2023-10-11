@@ -3,6 +3,7 @@ import 'package:messaging_app/core/consts/enum.dart';
 import 'package:messaging_app/core/models/user_model.dart';
 
 import '../models/call_model.dart';
+import '../models/category_model.dart';
 import '../models/chat_model.dart';
 
 List<String> categories = ['All chats', 'Personal', 'Work', 'Groups'];
@@ -30,7 +31,8 @@ List<ChatModel> recentChats = [
     senderStatus: UserStatus.none,
     senderName: 'Fullsnack Designers',
     senderImg: Assets.user2Icon,
-    lastMsg: 'Hello guys, we have discussed about tttttttttttttttttttttttttt',
+    lastMsg:
+        'Hello guys, we have discussed about post-corona vacation plan and our decision is to go to Bali. We will have a very big party after this corona ends! These are some images about our destination',
     sentDate: DateTime.now().subtract(
       const Duration(minutes: 16, seconds: 4),
     ),
@@ -205,4 +207,11 @@ List<CallModel> calls = [
     callType: CallType.missed,
     historyCalls: [],
   ),
+];
+
+List<ChannelModel> channels = [
+  const ChannelModel(id: 1, name: 'General'),
+  const ChannelModel(id: 2, name: 'Design Team'),
+  const ChannelModel(id: 3, name: 'UX Writer'),
+  const ChannelModel(id: 4, name: 'Projects'),
 ];

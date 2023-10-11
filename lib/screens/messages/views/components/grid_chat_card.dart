@@ -4,9 +4,10 @@ import 'package:messaging_app/core/consts/assets.dart';
 import 'package:messaging_app/core/routes/app_pages.dart';
 import 'package:messaging_app/core/theme/color_manager.dart';
 import 'package:messaging_app/core/models/chat_model.dart';
+import 'package:messaging_app/core/theme/font_manager.dart';
 import 'package:messaging_app/core/widgets/custom_image.dart';
 
-import '../../../../core/consts/enum.dart';
+import '../../../../core/widgets/image_status.dart';
 
 class GridChatCard extends StatelessWidget {
   const GridChatCard({
@@ -39,35 +40,10 @@ class GridChatCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Stack(
-                      children: [
-                        ClipOval(
-                          child: CustomImage(
-                            path: chat.senderImg,
-                            width: 48,
-                            height: 48,
-                          ),
-                        ),
-                        if (chat.senderStatus != UserStatus.none)
-                          Positioned(
-                            right: 0,
-                            bottom: 0,
-                            child: Container(
-                              height: 12,
-                              width: 12,
-                              decoration: BoxDecoration(
-                                color: userStatus(
-                                  chat.senderStatus,
-                                ),
-                                border: Border.all(
-                                  width: 1.5,
-                                  color: ColorManager.whiteColor,
-                                ),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                          ),
-                      ],
+                    ImageStatus(
+                      img: chat.senderImg,
+                      status: chat.senderStatus,
+                      imgSize: 36,
                     ),
                     const SizedBox(width: 8),
                     Expanded(
@@ -77,7 +53,12 @@ class GridChatCard extends StatelessWidget {
                         children: [
                           Text(
                             chat.senderName,
-                            style: context.textTheme.headlineMedium,
+                            style: context.textTheme.headlineMedium!.copyWith(
+                              color: Get.isDarkMode
+                                  ? ColorManager.blackColor
+                                  : null,
+                              fontWeight: FontWeightManger.bold,
+                            ),
                           ),
                           const SizedBox(height: 8),
                         ],

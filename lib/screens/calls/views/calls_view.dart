@@ -4,6 +4,7 @@ import 'package:messaging_app/core/consts/demo_data.dart';
 import 'package:messaging_app/core/models/call_model.dart';
 
 import '../../../core/consts/assets.dart';
+import '../../../core/theme/font_manager.dart';
 import '../../../core/widgets/custom_image.dart';
 import '../../../core/widgets/search_icon.dart';
 import '../controllers/calls_controller.dart';
@@ -21,7 +22,9 @@ class CallsView extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               'Recent Calls',
-              style: context.textTheme.headlineLarge,
+              style: context.textTheme.headlineLarge!.copyWith(
+                fontWeight: FontWeightManger.bold,
+              ),
             ),
             actions: const [
               SearchIcon(),

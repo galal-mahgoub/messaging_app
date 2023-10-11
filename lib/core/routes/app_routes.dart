@@ -5,6 +5,7 @@ abstract class Routes {
 
   static const mainLayout = _Paths.mainLayout;
   static const messageDetails = _Paths.messageDetails;
+  static const groupDescription = _Paths.groupDescription;
 }
 
 abstract class _Paths {
@@ -12,4 +13,5 @@ abstract class _Paths {
 
   static const mainLayout = '/mainLayout';
   static const messageDetails = '/message_details';
+  static const groupDescription = '/group_desciption';
 }

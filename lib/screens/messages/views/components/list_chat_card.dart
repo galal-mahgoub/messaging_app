@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:messaging_app/core/consts/assets.dart';
-import 'package:messaging_app/core/consts/enum.dart';
 import 'package:messaging_app/core/theme/color_manager.dart';
 import 'package:messaging_app/core/theme/font_manager.dart';
 import 'package:messaging_app/core/models/chat_model.dart';
@@ -9,6 +8,7 @@ import 'package:messaging_app/core/widgets/custom_image.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../../core/routes/app_pages.dart';
+import '../../../../core/widgets/image_status.dart';
 
 class ListChatCard extends StatelessWidget {
   const ListChatCard({
@@ -36,35 +36,10 @@ class ListChatCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                ClipOval(
-                  child: CustomImage(
-                    path: chat.senderImg,
-                    width: 48,
-                    height: 48,
-                  ),
-                ),
-                if (chat.senderStatus != UserStatus.none)
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      height: 12,
-                      width: 12,
-                      decoration: BoxDecoration(
-                        color: userStatus(
-                          chat.senderStatus,
-                        ),
-                        border: Border.all(
-                          width: 1.5,
-                          color: ColorManager.whiteColor,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-              ],
+            ImageStatus(
+              img: chat.senderImg,
+              status: chat.senderStatus,
+              imgSize: 48,
             ),
             const SizedBox(width: 16),
             Expanded(
